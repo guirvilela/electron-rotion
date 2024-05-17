@@ -7,11 +7,9 @@ files:
   - "!src/*"
   - "!electron.vite.config.{js,ts,mjs,cjs}"
   - "!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}"
-  - "!{.env,.env.*,.npmrc,pnpm-lock.yaml}"
   - "!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}"
 asarUnpack:
-  - resources/**
-# afterSign: build/notarize.js
+  - "**/*.{node,dll}"
 win:
   executableName: rotion
 nsis:
@@ -31,17 +29,12 @@ dmg:
 linux:
   target:
     - AppImage
-    # - snap
     - deb
     - rpm
     - pacman
     - freebsd
-  maintainer: guilhermevilela.com.br
   synopsis: ${description}
   category: Utility
 appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false
-# publish:
-#   provider: generic
-#   url: https://example.com/auto-updates
